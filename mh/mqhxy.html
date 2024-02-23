@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <title>mhxy</title>  
+  <style>  
+    body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* 使body占据整个视口高度 */
+        }
+  </style>  
+</head>  
+<body>  
+ <iframe id="myIframe" align="center" width="100%" height="100%" src="" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+ <!-- JavaScript 代码 -->  
+    <script>  
+        // 确保 DOM 已经加载完成  
+        document.addEventListener('DOMContentLoaded', function() {  
+            // 函数用于从 URL 获取指定名称的参数值  
+            function getURLParameter(name) {  
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;  
+            }  
+  
+            // 调用函数获取 iframeUrl 参数  
+            var iframeUrl = getURLParameter('iframeUrl');  
+  
+            // 如果获取到了 iframeUrl 参数，则设置到 iframe 的 src 属性  
+            if (iframeUrl) {  
+                document.getElementById('myIframe').src = iframeUrl;  
+            } else {  
+                console.error('No iframeUrl found in the URL parameters.');  
+            }  
+        });  
+    </script>  
+</body>  
+</html>

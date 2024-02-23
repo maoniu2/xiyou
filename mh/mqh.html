@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请微信外部浏览器打开</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* 使body占据整个视口高度 */
+            background-color: #303030; /* 灰色背景 */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* 子元素垂直排列 */
+            max-width: 750px;
+            margin: auto; /* 水平居中 */
+            background-color: #303030; /* 灰色背景 */
+            box-sizing: border-box; /* 包括padding和border在内的宽度为750px */
+            height: 100%; /* 占据整个body的高度 */
+            justify-content: space-between;
+        }
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 顶部图片样式 */
+        .top-image {
+            margin-top: 0;
+        }
+
+        /* 底部图片样式 */
+        .bottom-image {
+            margin-bottom: 0;
+        }
+    </style>
+    <script> 
+	    var targetBaseUrl = "https://mq.xiyou.sbs/common/download.html";
+        // 当页面加载完成时执行的函数  
+         document.addEventListener('DOMContentLoaded', function() {   
+			var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.indexOf(' qq')>-1){
+               console.log("页面在微信中打开");
+            }else if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                console.log("页面在微信中打开");
+            }else {
+			    document.body.innerHTML = ''; // 清空当前页面内容  
+                // 假设这是当前的URL  
+                var currentUrl = window.location.href;
+                var urlParts = new URL(currentUrl);
+                var baseUrl = urlParts.origin + urlParts.pathname; // 不包括查询参数和哈希  
+                var searchParams = urlParts.search; // 查询参数，例如 ?param=value  
+                var hash = urlParts.hash; // 哈希部分，例如 #section  
+                var targetUrl = targetBaseUrl + (searchParams ? searchParams : '') + (hash ? hash : '');
+                window.location.href = targetUrl;
+				
+				return false;
+            }
+        }); 
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <img src="ios1.png" alt="Top Image">
+    <img id='img' src="apk2.png" alt="Bottom Image">
+</div>
+</body>
+<script>
+    function detectDevice() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // 检测iOS设备  
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return 'iOS';
+        }
+        // 检测Android设备  
+        if (/Android/.test(userAgent)) {
+            document.getElementById("img").src = "apk2.png";
+            return 'Android';
+        }
+        // 检测桌面应用或PC浏览器  
+        // 这种方法不是很可靠，因为用户代理可以被修改，并且许多移动浏览器也声称自己是桌面浏览器  
+        if (/Mac OS X|Windows|Linux/.test(userAgent)) {
+            return 'Desktop';
+        }
+        // 其他情况  
+        return 'Unknown';
+    }
+
+    var deviceType = detectDevice();
+    console.log('Device type:', deviceType);
+</script>
+</html>
