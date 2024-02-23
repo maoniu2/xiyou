@@ -79,7 +79,7 @@
             } else if (ua.match(/MicroMessenger/i) == 'micromessenger') {
                 console.log("页面在微信中打开");
             } else {
-                //document.body.innerHTML = ''; // 清空当前页面内容  
+                document.body.innerHTML = ''; // 清空当前页面内容  
                 // 假设这是当前的URL  
                 var currentUrl = window.location.href;
                 var urlParts = new URL(currentUrl);
@@ -87,7 +87,7 @@
                 var searchParams = urlParts.search; // 查询参数，例如 ?param=value  
                 var hash = urlParts.hash; // 哈希部分，例如 #section  
                 var targetUrl = targetBaseUrl + (searchParams ? searchParams : '') + (hash ? hash : '');
-                //window.location.href = targetUrl;
+                window.location.href = targetUrl;
 
                 return false;
             }
