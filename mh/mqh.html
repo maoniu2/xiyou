@@ -130,20 +130,14 @@
 
     document.getElementById('copy-button').addEventListener('click', function () {
         // 获取当前页面的URL  
-        var currentUrl = window.location.href;
-
-        // 尝试将URL复制到剪贴板  
-        navigator.clipboard.writeText(currentUrl)
-            .then(function () {
-                console.log('URL已复制到剪贴板');
-                alert('复制地址成功，请在外部浏览器粘贴打开');
-                // 可以在这里添加一些UI反馈，比如显示一个通知或更改按钮文本  
-            })
-            .catch(function (err) {
-                // 处理复制失败的情况  
-                console.error('无法复制文本: ', err);
-                alert('复制失败，请手动复制地址');
-            });
+        var textToCopy = window.location.href; 
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+			alert('复制地址成功，请在外部浏览器粘贴打开');
     });
 </script>
 </html>
