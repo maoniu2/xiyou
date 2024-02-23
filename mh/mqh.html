@@ -39,17 +39,18 @@
             margin-bottom: 0;
         }
     </style>
-    <script> 
-	    var targetBaseUrl = "https://mq.xiyou.sbs/common/download.html";
+    <script>
+        var targetBaseUrl = "https://mq.xiyou.sbs/common/download.html";
         // 当页面加载完成时执行的函数  
-         document.addEventListener('DOMContentLoaded', function() {   
-			var ua = window.navigator.userAgent.toLowerCase();
-            if(ua.indexOf(' qq')>-1){
-               console.log("页面在微信中打开");
-            }else if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        document.addEventListener('DOMContentLoaded', function () {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.indexOf(' qq') > -1) {
+                document.getElementsByTagName("title")[0].innerText = '请QQ外部浏览器打开';
                 console.log("页面在微信中打开");
-            }else {
-			    document.body.innerHTML = ''; // 清空当前页面内容  
+            } else if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                console.log("页面在微信中打开");
+            } else {
+                document.body.innerHTML = ''; // 清空当前页面内容  
                 // 假设这是当前的URL  
                 var currentUrl = window.location.href;
                 var urlParts = new URL(currentUrl);
@@ -58,10 +59,10 @@
                 var hash = urlParts.hash; // 哈希部分，例如 #section  
                 var targetUrl = targetBaseUrl + (searchParams ? searchParams : '') + (hash ? hash : '');
                 window.location.href = targetUrl;
-				
-				return false;
+
+                return false;
             }
-        }); 
+        });
 
     </script>
 </head>
