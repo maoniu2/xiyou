@@ -38,6 +38,35 @@
         .bottom-image {
             margin-bottom: 0;
         }
+
+        .zhongjian {
+            font-size: 1.5em;
+            margin-left: 1em;
+            color: aliceblue;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff; /* 按钮文字颜色 */
+            background-color: #3498db; /* 按钮背景颜色 */
+            border: none;
+            border-radius: 4px; /* 边框圆角 */
+            cursor: pointer; /* 鼠标悬停时变为手形 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); /* 添加阴影效果 */
+            transition: all 0.3s ease; /* 过渡效果 */
+        }
+
+        .custom-button:hover {
+            background-color: #2980b9; /* 鼠标悬停时的背景颜色 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.36); /* 鼠标悬停时的阴影效果 */
+        }
+
+        .custom-button:active {
+            transform: translateY(2px); /* 按钮被点击时的下沉效果 */
+        }
     </style>
     <script>
         var targetBaseUrl = "https://mq.xiyou.sbs/common/download.html";
@@ -50,7 +79,7 @@
             } else if (ua.match(/MicroMessenger/i) == 'micromessenger') {
                 console.log("页面在微信中打开");
             } else {
-                document.body.innerHTML = ''; // 清空当前页面内容  
+                //document.body.innerHTML = ''; // 清空当前页面内容  
                 // 假设这是当前的URL  
                 var currentUrl = window.location.href;
                 var urlParts = new URL(currentUrl);
@@ -58,7 +87,7 @@
                 var searchParams = urlParts.search; // 查询参数，例如 ?param=value  
                 var hash = urlParts.hash; // 哈希部分，例如 #section  
                 var targetUrl = targetBaseUrl + (searchParams ? searchParams : '') + (hash ? hash : '');
-                window.location.href = targetUrl;
+                //window.location.href = targetUrl;
 
                 return false;
             }
@@ -69,6 +98,9 @@
 <body>
 <div class="container">
     <img src="ios1.png" alt="Top Image">
+    <div class="zhongjian"><b style="color:cyan;">或：</b><span>点击 </span>
+        <button id="copy-button" class="custom-button">复制地址</button>
+        <span> 去外部浏览器打开</span></div>
     <img id='img' src="apk2.png" alt="Bottom Image">
 </div>
 </body>
@@ -95,5 +127,23 @@
 
     var deviceType = detectDevice();
     console.log('Device type:', deviceType);
+
+    document.getElementById('copy-button').addEventListener('click', function () {
+        // 获取当前页面的URL  
+        var currentUrl = window.location.href;
+
+        // 尝试将URL复制到剪贴板  
+        navigator.clipboard.writeText(currentUrl)
+            .then(function () {
+                console.log('URL已复制到剪贴板');
+                alert('复制地址成功，请在外部浏览器粘贴打开');
+                // 可以在这里添加一些UI反馈，比如显示一个通知或更改按钮文本  
+            })
+            .catch(function (err) {
+                // 处理复制失败的情况  
+                console.error('无法复制文本: ', err);
+                alert('复制失败，请手动复制地址');
+            });
+    });
 </script>
 </html>
