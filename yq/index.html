@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>梦幻西游私服</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
@@ -12,14 +14,16 @@
 
     <style id="ai-assist-right-style">
         html.ai-assist-html {
-            width: calc(100% - 480px)!important;
-            position: relative!important;
-            min-height: 100vh!important
+            width: calc(100% - 480px) !important;
+            position: relative !important;
+            min-height: 100vh !important
         }
+
         .ai-assist-highlight {
             background: yellow;
         }
-    </style></head>
+    </style>
+</head>
 <body>
 
 <section class="aui-flexView">
@@ -49,7 +53,8 @@
 <!--                </div>-->
 <!--                <div class="aui-invitation-table">-->
 <!--                    <table id="jqueryTable">-->
-<!--                        <tbody><tr>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
 <!--                            <th>点击下载</th>-->
 <!--                            <th>操作</th>-->
 <!--                        </tr>-->
@@ -61,7 +66,8 @@
 <!--                            <td><a href="https://xx.xiyou.sbs/common/download.html">②下载(备用)</a></td>-->
 <!--                            <td class="fuzhi_dizhi" onclick="copyAddress(event)">复制地址</td>-->
 <!--                        </tr>-->
-<!--                        </tbody></table>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
 <!--                </div>-->
 <!--            </div>-->
 <!--            <div class="aui-invitation-item">-->
@@ -75,7 +81,8 @@
 <!--                </div>-->
 <!--                <div class="aui-invitation-table">-->
 <!--                    <table id="jqueryTable">-->
-<!--                        <tbody><tr>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
 <!--                            <th>点击下载</th>-->
 <!--                            <th>操作</th>-->
 <!--                        </tr>-->
@@ -87,7 +94,8 @@
 <!--                            <td><a href="https://mq.xiyou.sbs/common/download.html">②下载(备用)</a></td>-->
 <!--                            <td class="fuzhi_dizhi" onclick="copyAddress(event)">复制地址</td>-->
 <!--                        </tr>-->
-<!--                        </tbody></table>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
 <!--                </div>-->
 <!--            </div>-->
             <div class="aui-invitation-item">
@@ -95,13 +103,14 @@
                     <h2>NO.1 冰雪玲珑</h2>
                 </div>
                 <div class="aui-coupon-text aui-coupon-text-top">
-                    <p>福利邮箱里—</p>
+                    <p>-福利邮箱里—</p>
                     <p>礼包码000000 111111 222222 333333</p>
                     <p>444444 555555 666666 777777 888888 999999</p>
                 </div>
                 <div class="aui-invitation-table">
                     <table id="jqueryTable">
-                        <tbody><tr>
+                        <tbody>
+                        <tr>
                             <th>点击下载</th>
                             <th>操作</th>
                         </tr>
@@ -113,7 +122,8 @@
                             <td><a href="https://bx.xiyou.sbs/common/download.html">②下载(备用)</a></td>
                             <td class="fuzhi_dizhi" onclick="copyAddress(event)">复制地址</td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -131,13 +141,13 @@
         </div>
 
     </section>
-    <footer class="aui-footer aui-footer-fixed" data-ydui-actionsheet="{target:&#39;#actionSheet&#39;,closeElement:&#39;#cancel&#39;}">
+    <footer class="aui-footer aui-footer-fixed"
+            data-ydui-actionsheet="{target:&#39;#actionSheet&#39;,closeElement:&#39;#cancel&#39;}">
         <a href="javascript:;" class="aui-tabBar-item" id="download-button" onclick="scrollToSection()">
-            <span class="aui-tabBar-item-text">长按图片保存，微信扫一扫加入</span>
+            <span class="aui-tabBar-item-text">往下滑，长按图片保存，微信群加入</span>
         </a>
     </footer>
 </section>
-
 
 
 <script type="text/javascript" src="css/jquery.min.js"></script>
@@ -161,7 +171,8 @@
         }
         setTimeout(b, 3000);
     }
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         $('.swap').html($('.news_li').html());
         x = $('.news_li');
         y = $('.swap');
@@ -176,7 +187,7 @@
     const randomNum = Math.floor(Math.random() * 100000000) + 1;
 
     // 设置图片地址，注意将{randomNum}替换为生成的随机数
-    myImage.src =   myImage.src+"?v="+ randomNum ;
+    myImage.src = myImage.src + "?v=" + randomNum;
 
     function scrollToSection() {
         document.getElementById('sectionToScrollTo').scrollIntoView(false);
@@ -201,4 +212,5 @@
 </script>
 
 
-</body></html>
+</body>
+</html>
